@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    
     <style>
         :root {
             --bg-dark: #000000;
@@ -21,91 +21,71 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
+        
         html { scroll-behavior: smooth; }
 
-        body {
-            font-family: var(--font-body);
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            line-height: 1.6;
+        body { 
+            font-family: var(--font-body); 
+            background-color: var(--bg-dark); 
+            color: var(--text-main); 
+            line-height: 1.6; 
             overflow-x: hidden;
         }
 
         /* --- КНОПКИ --- */
-        .btn {
+        .btn { 
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            background: transparent;
-            color: var(--text-main);
-            padding: 15px 40px;
-            text-decoration: none;
-            font-family: var(--font-body);
-            font-size: 1rem;
-            font-weight: 500;
+            background: transparent; 
+            color: var(--text-main); 
+            padding: 15px 40px; 
+            text-decoration: none; 
+            font-family: var(--font-body); 
+            font-size: 1rem; 
+            font-weight: 500; 
             letter-spacing: 3px;
-            text-transform: uppercase;
-            border-radius: 50px;
-            transition: all 0.4s ease;
+            text-transform: uppercase; 
+            border-radius: 50px; 
+            transition: all 0.4s ease; 
             border: 1px solid var(--text-main);
             cursor: pointer;
         }
         .btn:hover { background: var(--text-main); color: var(--bg-dark); transform: translateY(-3px); }
 
         /* --- ХЕДЕР --- */
-        .header {
-            position: relative;
-            height: 100vh;
-            height: 100dvh;
+        .header { 
+            height: 100vh; 
             min-height: 600px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            overflow: hidden;
-            isolation: isolate;
+            background: url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat fixed; 
+            position: relative; 
         }
-
-        /* Фоновое фото через <img> — надёжнее, чем background-image */
-        .header-bg {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            z-index: 0;
+        .header::before { 
+            content: ''; 
+            position: absolute; 
+            inset: 0; 
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)); 
         }
-
-        .header-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.85));
-            z-index: 1;
+        .header-content { position: relative; z-index: 1; padding: 0 20px; animation: fadeIn 1.5s ease; }
+        
+        .header h1 { 
+            font-family: var(--font-heading); 
+            font-size: 5rem; 
+            font-weight: 400; 
+            letter-spacing: 15px; 
+            text-transform: uppercase; 
+            margin-bottom: 20px; 
         }
-
-        .header-content {
-            position: relative;
-            z-index: 2;
-            padding: 0 20px;
-            animation: fadeIn 1.5s ease;
-        }
-
-        .header h1 {
-            font-family: var(--font-heading);
-            font-size: 5rem;
-            font-weight: 400;
-            letter-spacing: 15px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-        }
-        .header p {
-            font-size: 1rem;
-            letter-spacing: 8px;
-            text-transform: uppercase;
-            color: var(--text-muted);
+        .header p { 
+            font-size: 1rem; 
+            letter-spacing: 8px; 
+            text-transform: uppercase; 
+            color: var(--text-muted); 
             margin-bottom: 50px;
         }
 
@@ -113,55 +93,50 @@
 
         /* --- СЕКЦИИ --- */
         .section { padding: 100px 20px; max-width: 1400px; margin: 0 auto; }
-        .section-title {
-            font-family: var(--font-heading);
-            font-size: 2.5rem;
-            font-weight: 400;
-            text-align: center;
-            margin-bottom: 60px;
-            text-transform: uppercase;
-            letter-spacing: 5px;
+        .section-title { 
+            font-family: var(--font-heading); 
+            font-size: 2.5rem; 
+            font-weight: 400; 
+            text-align: center; 
+            margin-bottom: 60px; 
+            text-transform: uppercase; 
+            letter-spacing: 5px; 
         }
-
+        
         /* --- ГАЛЕРЕЯ --- */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 20px;
-        }
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            height: 450px;
-            cursor: pointer;
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; }
+        .gallery-item { 
+            position: relative; 
+            overflow: hidden; 
+            height: 450px; 
+            cursor: pointer; 
             background-color: #111;
         }
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            display: block;
-            transition: transform 0.8s ease, filter 0.8s ease;
-            filter: grayscale(100%);
+        .gallery-item img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            transition: transform 0.8s ease, filter 0.8s ease; 
+            filter: grayscale(100%); /* По умолчанию ЧБ */
         }
-
+        
+        /* Десктопный ховер */
         @media (hover: hover) {
-            .gallery-item:hover img {
-                transform: scale(1.08);
-                filter: grayscale(0%);
+            .gallery-item:hover img { 
+                transform: scale(1.08); 
+                filter: grayscale(0%); 
             }
         }
-
+        
         /* --- УСЛУГИ И ЦЕНЫ --- */
         .pricing-bg { background: var(--bg-light); }
         .services-list { max-width: 800px; margin: 0 auto; }
-        .service-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            padding: 30px 0;
-            border-bottom: 1px solid #222;
+        .service-row { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: baseline; 
+            padding: 30px 0; 
+            border-bottom: 1px solid #222; 
             transition: 0.3s;
         }
         .service-row:hover { padding-left: 10px; padding-right: 10px; background: rgba(255,255,255,0.02); }
@@ -169,7 +144,7 @@
         .service-name { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 400; }
         .service-desc { font-size: 0.9rem; color: var(--text-muted); margin-top: 5px; max-width: 60%; }
         .service-price { font-size: 1.2rem; color: var(--text-main); white-space: nowrap; font-weight: 500; margin-left: 20px; }
-
+        
         /* --- КОНТАКТЫ И СОЦСЕТИ --- */
         .contacts { text-align: center; padding: 100px 20px; border-top: 1px solid #222; background: var(--bg-dark); }
         .contacts h2 { font-family: var(--font-heading); font-size: 2.5rem; font-weight: 400; margin-bottom: 20px; letter-spacing: 3px; text-transform: uppercase; }
@@ -198,24 +173,24 @@
             z-index: 1000; opacity: 0; visibility: hidden; transition: all 0.4s ease;
         }
         .modal-overlay.show { opacity: 1; visibility: visible; }
-
+        
         .modal-content {
-            background: #0a0a0a; padding: 50px 40px;
+            background: #0a0a0a; padding: 50px 40px; border-radius: 0;
             border: 1px solid #333; max-width: 400px; width: 90%;
             text-align: center; position: relative; transform: translateY(20px);
             transition: transform 0.4s ease; box-shadow: 0 25px 50px rgba(0,0,0,0.8);
         }
         .modal-overlay.show .modal-content { transform: translateY(0); }
-
+        
         .close-btn {
             position: absolute; top: 15px; right: 20px; font-size: 1.5rem;
             color: var(--text-muted); cursor: pointer; transition: 0.3s;
         }
         .close-btn:hover { color: var(--text-main); transform: rotate(90deg); }
-
+        
         .modal-content h3 { font-family: var(--font-heading); font-size: 1.8rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
         .modal-content p { color: var(--text-muted); margin-bottom: 30px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;}
-
+        
         .phone-container {
             display: flex; align-items: center; justify-content: space-between;
             background: #000; padding: 15px 20px; border: 1px solid #333; margin-bottom: 20px;
@@ -227,14 +202,14 @@
         }
         .copy-btn:hover { color: var(--text-main); transform: scale(1.1); }
         .copy-success { color: #2ecc71 !important; }
-
+        
         .btn-call { width: 100%; margin-bottom: 30px; border-radius: 0; letter-spacing: 2px; }
-
+        
         .modal-socials { display: flex; justify-content: center; gap: 20px; }
         .modal-socials a { color: var(--text-muted); font-size: 1.2rem; transition: 0.3s; }
         .modal-socials a:hover { color: var(--text-main); transform: translateY(-3px); }
 
-        /* --- АДАПТАЦИЯ ПОД МОБИЛЬНЫЕ --- */
+        /* --- АДАПТАЦИЯ ПОД МОБИЛЬНЫЕ И ЭФФЕКТ ПРОКРУТКИ --- */
         @media (max-width: 992px) {
             .header h1 { font-size: 4rem; letter-spacing: 10px; }
             .gallery { grid-template-columns: repeat(2, 1fr); }
@@ -246,25 +221,21 @@
             .header p { font-size: 0.85rem; letter-spacing: 4px; }
             .section { padding: 70px 20px; }
             .section-title { font-size: 2rem; margin-bottom: 40px; }
-
+            
             .gallery { grid-template-columns: 1fr; gap: 15px; }
-
-            /* Натуральный портретный кроп вместо жёсткой высоты */
-            .gallery-item {
-                height: auto;
-                aspect-ratio: 4 / 5;
-            }
-
+            .gallery-item { height: 400px; }
+            
+            /* Мобильный эффект скролла: по умолчанию ЧБ, при появлении на экране - цвет */
             .gallery-item img { filter: grayscale(100%); }
             .gallery-item.in-view img { filter: grayscale(0%); }
-
+            
             .service-row { flex-direction: column; align-items: flex-start; padding: 20px 0; }
             .service-desc { max-width: 100%; margin-bottom: 10px; }
             .service-price { font-size: 1.3rem; margin-left: 0; }
-
+            
             .contacts h2 { font-size: 2rem; }
             .phone-link { font-size: 1.5rem; }
-
+            
             .modal-content { padding: 40px 20px; }
         }
 
@@ -277,27 +248,6 @@
 <body>
 
     <header class="header">
-        <!--
-            ===========================================================
-            ЗАМЕНА ГЛАВНОГО ФОТО ХЕДЕРА — меняйте только URL в src и srcset.
-            Взял классический кадр с объективом: отлично смотрится
-            и в горизонтальной, и в вертикальной ориентации.
-            ===========================================================
-        -->
-        <img
-            class="header-bg"
-            src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?q=85&w=1920&auto=format&fit=crop"
-            srcset="
-                https://images.unsplash.com/photo-1452587925148-ce544e77e70d?q=85&w=750&auto=format&fit=crop 750w,
-                https://images.unsplash.com/photo-1452587925148-ce544e77e70d?q=85&w=1080&auto=format&fit=crop 1080w,
-                https://images.unsplash.com/photo-1452587925148-ce544e77e70d?q=85&w=1600&auto=format&fit=crop 1600w,
-                https://images.unsplash.com/photo-1452587925148-ce544e77e70d?q=85&w=1920&auto=format&fit=crop 1920w"
-            sizes="100vw"
-            alt=""
-            aria-hidden="true"
-            decoding="async"
-            fetchpriority="high">
-        <div class="header-overlay"></div>
         <div class="header-content">
             <h1>Кадр</h1>
             <p>Фотограф Алексей Иванов</p>
@@ -308,91 +258,13 @@
     <section class="section">
         <h2 class="section-title">Избранные работы</h2>
         <div class="gallery">
-
-            <div class="gallery-item">
-                <img
-                    src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=85&w=1200&auto=format&fit=crop"
-                    srcset="
-                        https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=85&w=480&auto=format&fit=crop 480w,
-                        https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=85&w=800&auto=format&fit=crop 800w,
-                        https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=85&w=1200&auto=format&fit=crop 1200w,
-                        https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=85&w=1600&auto=format&fit=crop 1600w"
-                    sizes="(max-width: 768px) 100vw, (max-width: 992px) 50vw, 33vw"
-                    alt="Портрет"
-                    loading="lazy"
-                    decoding="async">
-            </div>
-
-            <div class="gallery-item">
-                <img
-                    src="https://images.unsplash.com/photo-1493863641943-9b68992a8d07?q=85&w=1200&auto=format&fit=crop"
-                    srcset="
-                        https://images.unsplash.com/photo-1493863641943-9b68992a8d07?q=85&w=480&auto=format&fit=crop 480w,
-                        https://images.unsplash.com/photo-1493863641943-9b68992a8d07?q=85&w=800&auto=format&fit=crop 800w,
-                        https://images.unsplash.com/photo-1493863641943-9b68992a8d07?q=85&w=1200&auto=format&fit=crop 1200w,
-                        https://images.unsplash.com/photo-1493863641943-9b68992a8d07?q=85&w=1600&auto=format&fit=crop 1600w"
-                    sizes="(max-width: 768px) 100vw, (max-width: 992px) 50vw, 33vw"
-                    alt="Пейзаж"
-                    loading="lazy"
-                    decoding="async">
-            </div>
-
-            <div class="gallery-item">
-                <img
-                    src="https://images.unsplash.com/photo-1511895426328-dc8714191300?q=85&w=1200&auto=format&fit=crop"
-                    srcset="
-                        https://images.unsplash.com/photo-1511895426328-dc8714191300?q=85&w=480&auto=format&fit=crop 480w,
-                        https://images.unsplash.com/photo-1511895426328-dc8714191300?q=85&w=800&auto=format&fit=crop 800w,
-                        https://images.unsplash.com/photo-1511895426328-dc8714191300?q=85&w=1200&auto=format&fit=crop 1200w,
-                        https://images.unsplash.com/photo-1511895426328-dc8714191300?q=85&w=1600&auto=format&fit=crop 1600w"
-                    sizes="(max-width: 768px) 100vw, (max-width: 992px) 50vw, 33vw"
-                    alt="Семья"
-                    loading="lazy"
-                    decoding="async">
-            </div>
-
-            <div class="gallery-item">
-                <img
-                    src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=85&w=1200&auto=format&fit=crop"
-                    srcset="
-                        https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=85&w=480&auto=format&fit=crop 480w,
-                        https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=85&w=800&auto=format&fit=crop 800w,
-                        https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=85&w=1200&auto=format&fit=crop 1200w,
-                        https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=85&w=1600&auto=format&fit=crop 1600w"
-                    sizes="(max-width: 768px) 100vw, (max-width: 992px) 50vw, 33vw"
-                    alt="Мужской портрет"
-                    loading="lazy"
-                    decoding="async">
-            </div>
-
-            <div class="gallery-item">
-                <img
-                    src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=85&w=1200&auto=format&fit=crop"
-                    srcset="
-                        https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=85&w=480&auto=format&fit=crop 480w,
-                        https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=85&w=800&auto=format&fit=crop 800w,
-                        https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=85&w=1200&auto=format&fit=crop 1200w,
-                        https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=85&w=1600&auto=format&fit=crop 1600w"
-                    sizes="(max-width: 768px) 100vw, (max-width: 992px) 50vw, 33vw"
-                    alt="Стиль"
-                    loading="lazy"
-                    decoding="async">
-            </div>
-
-            <div class="gallery-item">
-                <img
-                    src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=85&w=1200&auto=format&fit=crop"
-                    srcset="
-                        https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=85&w=480&auto=format&fit=crop 480w,
-                        https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=85&w=800&auto=format&fit=crop 800w,
-                        https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=85&w=1200&auto=format&fit=crop 1200w,
-                        https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=85&w=1600&auto=format&fit=crop 1600w"
-                    sizes="(max-width: 768px) 100vw, (max-width: 992px) 50vw, 33vw"
-                    alt="Природа"
-                    loading="lazy"
-                    decoding="async">
-            </div>
-
+            <!-- Элементам добавлен класс gallery-item, JS будет их отслеживать -->
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop" alt="Портрет" loading="lazy"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1493863641943-9b68992a8d07?q=80&w=800&auto=format&fit=crop" alt="Пейзаж" loading="lazy"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=800&auto=format&fit=crop" alt="Семья" loading="lazy"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800&auto=format&fit=crop" alt="Мужской портрет" loading="lazy"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=800&auto=format&fit=crop" alt="Стиль" loading="lazy"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&w=800&auto=format&fit=crop" alt="Природа" loading="lazy"></div>
         </div>
     </section>
 
@@ -433,9 +305,9 @@
     <section class="contacts" id="contacts">
         <h2>Связаться со мной</h2>
         <p>Съемки в Москве и области. Выезд в студию или на локацию.</p>
-
+        
         <a href="tel:+79997654321" class="phone-link">+7 (999) 765-43-21</a>
-
+        
         <div class="social-links">
             <a href="#" aria-label="Telegram" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
             <a href="#" aria-label="Instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
@@ -454,16 +326,16 @@
             <span class="close-btn" onclick="closeModal(event)">&times;</span>
             <h3>Связаться</h3>
             <p>Обсудим вашу идеальную съемку</p>
-
+            
             <div class="phone-container">
                 <span class="phone-number" id="phoneText">+7 (999) 765-43-21</span>
                 <button class="copy-btn" id="copyBtn" onclick="copyPhone()" title="Скопировать номер">
                     <i class="far fa-copy"></i>
                 </button>
             </div>
-
+            
             <a href="tel:+79997654321" class="btn btn-call"><i class="fas fa-phone-alt"></i> Позвонить</a>
-
+            
             <div class="modal-socials">
                 <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
                 <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -473,8 +345,9 @@
         </div>
     </div>
 
+    <!-- СКРИПТЫ -->
     <script>
-        // --- МОДАЛЬНОЕ ОКНО ---
+        // --- ЛОГИКА МОДАЛЬНОГО ОКНА ---
         function openModal() {
             const modal = document.getElementById('contactModal');
             modal.classList.add('show');
@@ -482,7 +355,7 @@
         }
 
         function closeModal(e) {
-            if (e.target.id === 'contactModal' || e.target.classList.contains('close-btn')) {
+            if (e.target.id === 'contactModal' || e.target.className === 'close-btn') {
                 const modal = document.getElementById('contactModal');
                 modal.classList.remove('show');
                 document.body.style.overflow = '';
@@ -490,14 +363,14 @@
         }
 
         function copyPhone() {
-            const phoneNumber = "+79997654321";
+            const phoneNumber = "+79997654321"; 
             const copyBtn = document.getElementById('copyBtn');
             const icon = copyBtn.querySelector('i');
 
             navigator.clipboard.writeText(phoneNumber).then(() => {
                 icon.className = 'fas fa-check';
                 copyBtn.classList.add('copy-success');
-
+                
                 setTimeout(() => {
                     icon.className = 'far fa-copy';
                     copyBtn.classList.remove('copy-success');
@@ -508,21 +381,34 @@
             });
         }
 
-        // --- АНИМАЦИЯ ГАЛЕРЕИ НА МОБИЛЬНЫХ ---
+        // --- ЛОГИКА АНИМАЦИИ ПРИ ПРОКРУТКЕ (МОБИЛЬНЫЕ) ---
         document.addEventListener("DOMContentLoaded", function() {
+            // Проверяем, является ли устройство мобильным (ширина экрана)
             const isMobile = window.matchMedia("(max-width: 768px)").matches;
-            if (!isMobile) return;
 
-            const items = document.querySelectorAll('.gallery-item');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('in-view');
-                    }
+            if (isMobile) {
+                const images = document.querySelectorAll('.gallery-item');
+                
+                // Создаем обсервер
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            // Когда картинка появляется в поле зрения, добавляем класс
+                            entry.target.classList.add('in-view');
+                            
+                            // Если хочешь, чтобы при пролистывании дальше она снова становилась ЧБ, 
+                            // раскомментируй строку ниже:
+                            // } else {
+                            //     entry.target.classList.remove('in-view');
+                        }
+                    });
+                }, { 
+                    threshold: 0.5 // Срабатывает, когда 50% картинки видно на экране
                 });
-            }, { threshold: 0.5 });
 
-            items.forEach(item => observer.observe(item));
+                // Начинаем следить за каждой картинкой
+                images.forEach(img => observer.observe(img));
+            }
         });
     </script>
 </body>
